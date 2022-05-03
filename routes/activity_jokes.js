@@ -86,3 +86,5 @@ router.get('/activity-jokes/download', async(req, res) => {
 
 //Exportar configuración
 module.exports = router;
+
+// Desarrollado por: Ing. Camilo A. Castañeda G. - 2022

@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', function (req, res) {
-    res.send('<h1>Servicio Web para consultar actividades y chistes.</h1><h2> - Prueba Humboldt - </h2>');
+    res.send('<h1>Servicio Web para consultar actividades y chistes.</h1><h2>Prueba Humboldt</h2>');
 });
 
 app.use('/api', require('./routes/activity_jokes'));
