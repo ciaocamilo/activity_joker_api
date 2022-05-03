@@ -34,3 +34,5 @@ app.set('puerto', process.env.PORT || 3000);
 app.listen(app.get('puerto'), function () {
     console.log('La aplicación corre en el puerto '+ app.get('puerto'));
 });
+
+// Desarrollado por: Ing. Camilo A. Castañeda G. - 2022
