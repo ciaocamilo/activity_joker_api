@@ -22,8 +22,24 @@ router.get('/activity-jokes/new/:type', async(req, res) => {
                             .then(result2 => {
                                 if (!result2.data.error) {
                                     if (jokes_array.length < 1) {
-                                        jokes_array.push({joke: result2.data});
-                                        res.json(jokes_array[0]);
+                                        jokes_array.push(result2.data);
+                                        let joke_data = jokes_array[0];
+                                        let joke_text = '';
+                                        if (joke_data.type === 'twopart') {
+                                            joke_text = joke_data.setup + '->' + joke_data.delivery;
+                                        } else {
+                                            joke_text = joke_data.joke;
+                                        }
+                                        let final_data = {
+                                            type: activity_data.type,
+                                            activity: activity_data.activity,
+                                            key: activity_data.key,
+                                            joker: {
+                                                id: joke_data.id,
+                                                joke: joke_text
+                                            }
+                                        }
+                                        res.json(final_data);
                                     }
                                 }
                                 if (index === words_array.length-1 && jokes_array.length === 0) {
