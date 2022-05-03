@@ -30,6 +30,7 @@ router.get('/activity-jokes/new/:type', async(req, res) => {
                                         } else {
                                             joke_text = joke_data.joke;
                                         }
+                                        // Organiza información
                                         let final_data = {
                                             type: activity_data.type,
                                             activity: activity_data.activity,
@@ -39,6 +40,13 @@ router.get('/activity-jokes/new/:type', async(req, res) => {
                                                 joke: joke_text
                                             }
                                         }
+                                        // Inserta en base de datos
+                                        try {
+                                            ActivityJokes.create(final_data);
+                                        } catch (error) {
+                                            console.log('Error de escritura en la base de datos: ' + error);
+                                        }
+                                        // Rederiza JSON
                                         res.json(final_data);
                                     }
                                 }
